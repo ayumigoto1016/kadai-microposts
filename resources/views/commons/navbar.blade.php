@@ -21,7 +21,7 @@
                                 
                                 <li class="dropdown-item">{!! link_to_route('users.show', 'Favorites', ['user' => Auth::id()]) !!}</li>      
                                 
-                                <li class="dropdown-divider"></li>　　　//ボーダー線？
+                                <li class="dropdown-divider"></li>
                                 {{-- ログアウトへのリンク --}}
                                 <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
                             </ul>
