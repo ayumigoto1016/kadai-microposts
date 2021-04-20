@@ -16,6 +16,20 @@
                     </div>
                     <div>
                         @if (Auth::id() == $micropost->user_id)
+
+/*
+                            {{-- お気に入り追加ボタンのフォーム --}}
+                            {!! Form::open(['route' => ['favorites.store', $micropost->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('Favorite', ['class' => 'btn btn-default btn-sm']) !!}
+                            {!! Form::close() !!}   
+
+                       
+                            {{-- お気に入り解除ボタンのフォーム --}}
+                            {!! Form::open(['route' => ['favorites.destroy', $micropost->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('Unfavorite', ['class' => 'btn btn-success btn-sm']) !!}
+                            {!! Form::close() !!}                        
+              
+*/                     
                             {{-- 投稿削除ボタンのフォーム --}}
                             {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
