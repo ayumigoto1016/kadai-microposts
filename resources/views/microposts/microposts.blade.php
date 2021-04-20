@@ -16,7 +16,18 @@
                     </div>
                     <div>
                         @if (Auth::id() == $micropost->user_id)
-//以下、修正必要箇所
+              
+                            {{-- 投稿削除ボタンのフォーム --}}
+                            {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                            {!! Form::close() !!}
+                        @endif
+                    </div>
+                    
+                    
+//以下、修正必要箇所                    
+/*                    <div>
+
 
                             {{-- お気に入り追加ボタンのフォーム --}}
                             {!! Form::open(['route' => ['favorites.store', $micropost->id], 'method' => 'delete']) !!}
@@ -27,15 +38,10 @@
                             {{-- お気に入り解除ボタンのフォーム --}}
                             {!! Form::open(['route' => ['favorites.destroy', $micropost->id], 'method' => 'delete']) !!}
                                 {!! Form::submit('Unfavorite', ['class' => 'btn btn-success btn-sm']) !!}
-                            {!! Form::close() !!}                        
-              
-                    
-                            {{-- 投稿削除ボタンのフォーム --}}
-                            {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                            {!! Form::close() !!}
-                        @endif
+                            {!! Form::close() !!}                                 
                     </div>
+                    */
+      
                 </div>
             </li>
         @endforeach

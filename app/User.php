@@ -223,5 +223,17 @@ class User extends Authenticatable
     }    
     
     
+    /**
+     * このユーザがお気に入りした投稿に絞り込む。
+     */
+    public function feed_favorites()
+    {
+        // このユーザがお気に入りした投稿のidを取得して配列にする
+        $micropostIds = $this->favorites()->pluck('microposts.id')->toArray();
+        // このユーザの投稿のidもその配列に追加
+        $micropostIds[] = $this->id;
+        // それらのユーザが所有する投稿に絞り込む
+        return Micropost::whereIn('micropost_id', $micropostIds);
+    }      
     
 }
