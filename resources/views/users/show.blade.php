@@ -2,6 +2,24 @@
 
 @section('content')
     <div class="row">
+ 
+    <div class="row">
+        <aside class="col-sm-4">
+            {{-- ユーザ情報 --}}
+            @include('users.card')
+        </aside>
+        <div class="col-sm-8">
+            {{-- タブ --}}
+            @include('users.navtabs')
+            @if (Auth::id() == $user->id)
+                {{-- 投稿フォーム --}}
+                @include('microposts.form')
+            @endif
+            {{-- 投稿一覧 --}}
+            @include('microposts.microposts')
+        </div>
+    </div> 
+        
         <aside class="col-sm-4">
             <div class="card">
                 <div class="card-header">
@@ -12,6 +30,9 @@
                     <img class="rounded img-fluid" src="{{ Gravatar::get($user->email, ['size' => 500]) }}" alt="">
                 </div>
             </div>
+            {{-- フォロー／アンフォローボタン --}}
+            @include('user_follow.follow_button')            
+            
         </aside>
         <div class="col-sm-8">
             <ul class="nav nav-tabs nav-justified mb-3">
