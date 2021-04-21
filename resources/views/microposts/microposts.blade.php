@@ -22,25 +22,18 @@
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                             {!! Form::close() !!}
                         @endif
+                        @include('user_favorite.favorite_button')
                     </div>
                     
                     
-//以下、修正必要箇所                    
-/*                    <div>
+        <div>
 
 
-                            {{-- お気に入り追加ボタンのフォーム --}}
-                            {!! Form::open(['route' => ['favorites.store', $micropost->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('Favorite', ['class' => 'btn btn-default btn-sm']) !!}
-                            {!! Form::close() !!}   
+
 
                        
-                            {{-- お気に入り解除ボタンのフォーム --}}
-                            {!! Form::open(['route' => ['favorites.destroy', $micropost->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('Unfavorite', ['class' => 'btn btn-success btn-sm']) !!}
-                            {!! Form::close() !!}                                 
+
                     </div>
-                    */
       
                 </div>
             </li>

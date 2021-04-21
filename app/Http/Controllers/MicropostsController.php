@@ -16,7 +16,7 @@ class MicropostsController extends Controller
             // （後のChapterで他ユーザの投稿も取得するように変更しますが、現時点ではこのユーザの投稿のみ取得します）
             $microposts = $user->feed_microposts()->orderBy('created_at', 'desc')->paginate(10);
             
-            $favorites = $user->feed_favorites()->orderBy('created_at', 'desc')->paginate(10);
+            // $favorites = $user->favorites()->orderBy('created_at', 'desc')->paginate(10);
             
             
             $data = [
@@ -64,29 +64,7 @@ class MicropostsController extends Controller
     
     
     
-    /**
-     * ユーザのお気に入り一覧ページを表示するアクション。
-     *
-     * @param  $id  ユーザのid
-     * @return \Illuminate\Http\Response
-     */
-    public function favorites($id)
-    {
-        // idの値でユーザを検索して取得
-        $user = User::findOrFail($id);
 
-        // 関係するモデルの件数をロード
-        $user->loadRelationshipCounts();
-
-        // ユーザのお気に入り一覧を取得
-        $favorites = $user->favorites()->paginate(10);
-
-        // お気に入り一覧ビューでそれらを表示
-        return view('users.favorites', [
-            'user' => $user,
-            'users' => $favorites,
-        ]);
-    }
 
 
     
